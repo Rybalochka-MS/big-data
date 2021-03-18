@@ -1,0 +1,124 @@
+<html>
+    <head>
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      <script type="text/javascript">
+        google.charts.load('current', {
+          'packages': ['map'],
+          // Note: you will need to get a mapsApiKey for your project.
+          // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+          'mapsApiKey': 'AIzaSyCrverlLyITA9qWYnsU1jWvZIAp3aWPPyk'
+        });
+        google.charts.setOnLoadCallback(drawMap);
+
+        function drawMap () {
+          var data = new google.visualization.DataTable();
+          data.addColumn('string', 'Address');
+          data.addColumn('string', 'Location');
+          data.addColumn('string', 'Marker')
+
+          data.addRows(
+              datasets
+          );
+          var url = 'https://icons.iconarchive.com/icons/icons-land/vista-map-markers/48/';
+
+          var options = {
+            zoomLevel: 6,
+            showTooltip: true,
+            showInfoWindow: true,
+            useMapTypeControl: true,
+            icons: {
+              pin: {
+                normal:   url + 'Map-Marker-Ball-Azure-icon.png',
+                selected: url + 'Map-Marker-Ball-Pink-icon.png'
+              }
+            }
+          };
+          var map = new google.visualization.Map(document.getElementById('map_div'));
+
+          map.draw(data, options);
+        }
+      </script>
+    </head>
+    <body>
+      <table>
+        <tr>
+          <th colspan="3">MapReduce Graphics</th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <td colspan="3"><b>2017</b></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><img src="img/brand2017.png"></td>
+          <td><img src="img/color2017.png"></td>
+          <td><img src="img/make_year2017.png"></td>
+        </tr>
+        <tr>
+          <td colspan="3"><b>2018</b></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><img src="img/brand2018.png"></td>
+          <td><img src="img/color2018.png"></td>
+          <td><img src="img/make_year2018.png"></td>
+        </tr>
+        <tr>
+          <td colspan="3"><b>2019</b></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><img src="img/brand2019.png"></td>
+          <td><img src="img/color2019.png"></td>
+          <td><img src="img/make_year2019.png"></td>
+        </tr>
+        <tr>
+          <td colspan="3"><b>2020</b></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><img src="img/brand2020.png"></td>
+          <td><img src="img/color2020.png"></td>
+          <td><img src="img/make_year2020.png"></td>
+        </tr>
+        <tr>
+          <td colspan="3"><b>2021</b></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><img src="img/brand2021.png"></td>
+          <td><img src="img/color2021.png"></td>
+          <td><img src="img/make_year2021.png"></td>
+        </tr>
+        <tr>
+          <td colspan="3"><b>Registration statistic</b></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td colspan="3"><img src="img/reg_year.png"></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td colspan="3"><b>Map</b></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <div id="map_div" style="height: 200%; width: 100%"></div>
+          </td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+    </body>
+</html>
+

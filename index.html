@@ -1,0 +1,124 @@
+<html>
+    <head>
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      <script type="text/javascript">
+        google.charts.load('current', {
+          'packages': ['map'],
+          // Note: you will need to get a mapsApiKey for your project.
+          // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+          'mapsApiKey': 'AIzaSyCrverlLyITA9qWYnsU1jWvZIAp3aWPPyk'
+        });
+        google.charts.setOnLoadCallback(drawMap);
+
+        function drawMap () {
+          var data = new google.visualization.DataTable();
+          data.addColumn('string', 'Address');
+          data.addColumn('string', 'Location');
+          data.addColumn('string', 'Marker')
+
+          data.addRows(
+              [['м. Красноград, Україна', '10050', 'pin'], ['м. Новомосковськ, Україна', '30026', 'pin'], ['м. Київ, Україна', '853951', 'pin'], ['м. Первомайськ, Україна', '17917', 'pin'], ['м. Радомишль, Україна', '14461', 'pin'], ['Чернівецька обл., Україна', '19420', 'pin'], ['м. Запоріжжя, Україна', '125284', 'pin'], ['м. Кіцмань, Україна', '14496', 'pin'], ['м. Дніпро, Україна', '230463', 'pin'], ['м. Баришівка, Україна', '20286', 'pin'], ['м. Харків, Україна', '160848', 'pin'], ['м. Кропивницький, Україна', '63243', 'pin'], ['Київська обл., Україна', '119066', 'pin'], ['Тернопільська область, Україна', '111749', 'pin'], ['м. Миколаїв, Україна', '86893', 'pin'], ['м. Краматорськ, Україна', '46380', 'pin'], ['м. Коростень, Україна', '17726', 'pin'], ['м. Прилуки, Україна', '24985', 'pin'], ['м. Одеса, Україна', '246824', 'pin'], ['м. Маріуполь, Україна', '61626', 'pin'], ['м. Новояворівськ, Україна', '33536', 'pin'], ['м. Дрогобич, Україна', '29998', 'pin'], ['м. Кривий Ріг, Україна', '91493', 'pin'], ['м. Львів, Україна', '164015', 'pin'], ['м. Ніжин, Україна', '18685', 'pin'], ['м. Біла, Україна', '61575', 'pin'], ['м. Олександрія, Україна', '20027', 'pin'], ['м. Сєвєродонецьк, Україна', '24652', 'pin'], ['Полтавська область, Україна', '128395', 'pin'], ['м. Нікополь, Україна', '21876', 'pin'], ['м. Мена, Україна', '12646', 'pin'], ['м. Умань, Україна', '39525', 'pin'], ['м. Хмельницький, Україна', '104848', 'pin'], ['м. Івано-Франківськ, Україна', '82380', 'pin'], ['м. Черкаси, Україна', '81790', 'pin'], ['м. Миргород, Україна', '19247', 'pin'], ['м. Буча, Україна', '42465', 'pin'], ['м. Кам`янське, Україна', '36970', 'pin'], ['м. Чернівці, Україна', '91989', 'pin'], ['м. Обухів, Україна', '27694', 'pin'], ['м. Підгайці, Україна', '10482', 'pin'], ['м. Нововолинськ, Україна', '28523', 'pin'], ['м. Шепетівка, Україна', '30529', 'pin'], ['м. Вишгород, Україна', '31992', 'pin'], ['м. Переяслав-Хмельницький, Україна', '14191', 'pin'], ['м. Волноваха, Україна', '13061', 'pin'], ['м. Червоноград, Україна', '35607', 'pin'], ['м. Новий, Україна', '6144', 'pin'], ['Харківська область, Україна', '75386', 'pin'], ['м. Теребовля, Україна', '17867', 'pin'], ['м. Павлоград, Україна', '21332', 'pin'], ['м. Золотоноша, Україна', '19449', 'pin'], ['м. Кременець, Україна', '21183', 'pin'], ['м. Бровари, Україна', '56718', 'pin'], ['м. Вознесенськ, Україна', '10083', 'pin'], ['м. Гадяч, Україна', '14116', 'pin'], ['м. Бахмут, Україна', '32225', 'pin'], ['м. Бердичів, Україна', '29289', 'pin'], ['м. Корсунь-Шевченківський, Україна', '14104', 'pin'], ['Житомирська область, Україна', '80491', 'pin'], ['Волинська область, Україна', '111427', 'pin'], ['м. Кременчук, Україна', '51968', 'pin'], ['м. Стрий, Україна', '48254', 'pin'], ['м. Охтирка, Україна', '16617', 'pin'], ['м. Ужгород, Україна', '38543', 'pin'], ['м. Чернігів, Україна', '57604', 'pin'], ['м. Мерефа, Україна', '36501', 'pin'], ['м. Конотоп, Україна', '15589', 'pin'], ['Львівська обл., Україна', '29720', 'pin'], ['м. Новоград-Волинський, Україна', '25129', 'pin'], ['м. Лубни, Україна', '20851', 'pin'], ['м. Самбір, Україна', '25758', 'pin'], ['м. Рівне, Україна', '136691', 'pin'], ['м. Суми, Україна', '61423', 'pin'], ['м. Покровськ, Україна', '35211', 'pin'], ['м. Нова, Україна', '4661', 'pin'], ['м. Херсон, Україна', '51353', 'pin'], ['м. Звенигородка, Україна', '15032', 'pin'], ['с. Стрільбичі, Україна', '10456', 'pin'], ['м. Горішні, Україна', '12918', 'pin']]
+          );
+          var url = 'https://icons.iconarchive.com/icons/icons-land/vista-map-markers/48/';
+
+          var options = {
+            zoomLevel: 6,
+            showTooltip: true,
+            showInfoWindow: true,
+            useMapTypeControl: true,
+            icons: {
+              pin: {
+                normal:   url + 'Map-Marker-Ball-Azure-icon.png',
+                selected: url + 'Map-Marker-Ball-Pink-icon.png'
+              }
+            }
+          };
+          var map = new google.visualization.Map(document.getElementById('map_div'));
+
+          map.draw(data, options);
+        }
+      </script>
+    </head>
+    <body>
+      <table>
+        <tr>
+          <th colspan="3">MapReduce Graphics</th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <td colspan="3"><b>2017</b></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><img src="img/brand2017.png"></td>
+          <td><img src="img/color2017.png"></td>
+          <td><img src="img/make_year2017.png"></td>
+        </tr>
+        <tr>
+          <td colspan="3"><b>2018</b></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><img src="img/brand2018.png"></td>
+          <td><img src="img/color2018.png"></td>
+          <td><img src="img/make_year2018.png"></td>
+        </tr>
+        <tr>
+          <td colspan="3"><b>2019</b></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><img src="img/brand2019.png"></td>
+          <td><img src="img/color2019.png"></td>
+          <td><img src="img/make_year2019.png"></td>
+        </tr>
+        <tr>
+          <td colspan="3"><b>2020</b></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><img src="img/brand2020.png"></td>
+          <td><img src="img/color2020.png"></td>
+          <td><img src="img/make_year2020.png"></td>
+        </tr>
+        <tr>
+          <td colspan="3"><b>2021</b></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><img src="img/brand2021.png"></td>
+          <td><img src="img/color2021.png"></td>
+          <td><img src="img/make_year2021.png"></td>
+        </tr>
+        <tr>
+          <td colspan="3"><b>Registration statistic</b></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td colspan="3"><img src="img/reg_year.png"></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td colspan="3"><b>Map</b></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <div id="map_div" style="height: 200%; width: 100%"></div>
+          </td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+    </body>
+</html>
+
